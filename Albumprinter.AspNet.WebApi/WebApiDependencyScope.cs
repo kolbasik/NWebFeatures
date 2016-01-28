@@ -44,7 +44,16 @@ namespace Albumprinter.AspNet.WebApi
 
         public void Dispose()
         {
-            ServiceProvider.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                ServiceProvider.Dispose();
+            }
         }
     }
 }

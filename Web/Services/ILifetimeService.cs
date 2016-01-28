@@ -70,10 +70,16 @@ namespace Web.Services
 
         ~LifetimeService()
         {
-            Dispose();
+            Dispose(false);
         }
 
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
         {
             Interlocked.Decrement(ref lifetime.Alive);
             Interlocked.Increment(ref lifetime.Disposed);

@@ -7,7 +7,7 @@
             Enabled = true;
         }
 
-        public virtual bool Enabled { get; set; }
+        public bool Enabled { get; set; }
 
         public virtual void Init(FeaturesBootstrapContext ctx)
         {
